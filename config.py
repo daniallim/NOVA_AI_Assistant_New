@@ -5,10 +5,10 @@ APP_VERSION = "2.0.0"
 # LM Studio
 # ----------------------------------------------------------------------
 # Start the local server in LM Studio before using NOVA.
-LMSTUDIO_URL = "http://127.0.0.1:1234/v1"
+LMSTUDIO_URL = "http://localhost:1234/v1"
 
 # Must match a model ID returned by:
-# http://127.0.0.1:1234/v1/models
+# http://localhost:1234/v1/models
 LMSTUDIO_MODEL = "ministral-3-8b-instruct-2512"
 
 # NOVA uses LM Studio only. No Ollama fallback.
