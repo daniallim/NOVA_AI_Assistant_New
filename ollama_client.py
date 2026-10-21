@@ -10,6 +10,7 @@ and click "Start Server". Default address is http://127.0.0.1:1234
 """
 
 import requests
+
 import config
 from config import SYSTEM_PROMPT
 

@@ -1,4 +1,8 @@
-import os, math, wave, struct
+import math
+import os
+import struct
+import wave
+
 
 def tone(path, frequency=700, duration=0.10, volume=0.22):
     os.makedirs(os.path.dirname(path), exist_ok=True)

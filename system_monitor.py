@@ -1,6 +1,7 @@
-import psutil
 import subprocess
-import re
+
+import psutil
+
 
 def gpu_stats():
     try:

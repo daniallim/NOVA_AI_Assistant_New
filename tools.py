@@ -3,9 +3,10 @@ import re
 import shutil
 import subprocess
 import webbrowser
+from datetime import datetime
 from difflib import get_close_matches
 from pathlib import Path
-from datetime import datetime
+
 import requests
 
 # Friendly-name shortcuts that never need a filesystem search - fast path.
@@ -130,6 +131,7 @@ def _resolve_from_installed_apps(name):
 
 def system_info():
     import platform
+
     import psutil
     return {
         "os": platform.platform(),

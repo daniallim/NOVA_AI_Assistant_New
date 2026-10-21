@@ -9,12 +9,12 @@ If DB_BACKEND is "mysql" but the server is unreachable, NOVA falls back to
 SQLite instead of refusing to start, and prints why.
 """
 
-import os
 import sqlite3
 import threading
 from datetime import datetime
 
 from config import DB_BACKEND, DB_FILE
+
 
 # ======================================================================
 #  SQLite fallback - mirrors the MySQL API so the rest of the app is
@@ -265,8 +265,7 @@ class SQLiteMemoryDB:
 
     def stats(self):
         def count(table):
-            return self.conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-
+            return self.conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]  # nosec B608
         return {
             "messages": count("messages"),
             "memories": count("memories"),
@@ -292,8 +291,8 @@ def MemoryDB(*args, **kwargs):
 
     if DB_BACKEND.lower() == "mysql":
         try:
-            from mysql_database import MySQLMemoryDB
             import mysql_config as cfg
+            from mysql_database import MySQLMemoryDB
 
             db = MySQLMemoryDB(*args, **kwargs)
             db.backend = "mysql"

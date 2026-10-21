@@ -1,26 +1,46 @@
 import math
-import os, re, threading
+import re
+import threading
 from datetime import datetime
-from PySide6.QtCore import Qt, QTimer, QPropertyAnimation, QEasingCurve, Signal, QObject
-from PySide6.QtGui import QPainter, QColor, QPen, QBrush, QFont
-from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QLabel, QPushButton, QTextEdit, QVBoxLayout,
-    QHBoxLayout, QFrame, QProgressBar, QLineEdit, QMessageBox
-)
-from PySide6.QtMultimedia import QSoundEffect
-from PySide6.QtCore import QUrl
 
-from config import (
-    APP_NAME, APP_VERSION, WINDOW_WIDTH, WINDOW_HEIGHT, SAFE_MODE, SOUNDS_DIR,
-    ALWAYS_LISTEN, AUTO_SPEAK, CONFIRM_REQUIRED_TOOLS,
+from PySide6.QtCore import (
+    QObject,
+    Qt,
+    QTimer,
+    Signal,
 )
+from PySide6.QtGui import QBrush, QColor, QFont, QPainter, QPen
+from PySide6.QtWidgets import (
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QMainWindow,
+    QProgressBar,
+    QPushButton,
+    QTextEdit,
+    QVBoxLayout,
+    QWidget,
+)
+
 import database
+from config import (
+    ALWAYS_LISTEN,
+    APP_NAME,
+    APP_VERSION,
+    AUTO_SPEAK,
+    CONFIRM_REQUIRED_TOOLS,
+    SAFE_MODE,
+    SOUNDS_DIR,
+    WINDOW_HEIGHT,
+    WINDOW_WIDTH,
+)
 from database import MemoryDB
 from ollama_client import OllamaClient
+from sounds import make_sound_pack
 from system_monitor import get_stats
 from tools import execute_tool, log_blocked_tool
 from voice import VoiceEngine
-from sounds import make_sound_pack
 
 STYLE = '''
 QMainWindow, QWidget {
