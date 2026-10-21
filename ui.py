@@ -315,7 +315,7 @@ class NovaWindow(QMainWindow):
             f"VRAM {s['gpu_data']['vram_used']:.0f}/{s['gpu_data']['vram_total']:.0f} MB  |  "
             f"{s['gpu_data']['temperature']:.0f}°C"
         )
-        self.status.setText("● OLLAMA ONLINE" if self.client.is_online() else "● OLLAMA OFFLINE")
+        self.status.setText("● LM STUDIO ONLINE" if self.client.is_online() else "● LM STUDIO OFFLINE")
         QTimer.singleShot(1500, self.update_stats)
 
     def set_state(self, text):
