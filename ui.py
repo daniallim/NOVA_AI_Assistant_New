@@ -201,11 +201,13 @@ class NovaWindow(QMainWindow):
         f.setObjectName("panel")
         return f
 
+
+
     def label(self, text, object_name=None):
-        l = QLabel(text)
+        label_widget = QLabel(text)
         if object_name:
-            l.setObjectName(object_name)
-        return l
+            label_widget.setObjectName(object_name)
+        return label_widget
 
     def build_ui(self):
         central = QWidget()
